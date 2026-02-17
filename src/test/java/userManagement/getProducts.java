@@ -13,30 +13,30 @@ import static org.hamcrest.Matchers.*;
 public class getProducts {
 
 
-        @Test
-        public void getProductData(){
-                    given().
-                    when().get("http://localhost:2002/api/products").
-                    then().
-                    assertThat().
-                    statusCode(200);
-        }
+    @Test
+    public void getProductData() {
+        given().
+                when().get("http://localhost:2002/api/products").
+                then().
+                assertThat().
+                statusCode(200);
+    }
 
-        @Test
-        public void validateGetResponseBody(){
-                    given().
-                    when().get("http://localhost:2002/api/products").
-                    then().
-                    assertThat().
-                            body(not(isEmptyString())). // Ensure response is not empty
-                            body("id", everyItem(notNullValue())).   // Every product has an id
-                            body(containsString("id")).
-                            body(containsString("name")).
-                            body("[0].name", equalTo("iPad")).
-                            body("price", hasItem(500)).    // Prices exist in the response
-                            body("[1].name", equalTo("iPhone X")).// second item in list
-                            body("[1].price", equalTo(900));// second price in list
-        }
+    @Test
+    public void validateGetResponseBody() {
+        given().
+                when().get("http://localhost:2002/api/products").
+                then().
+                assertThat().
+                body(not(isEmptyString())). // Ensure response is not empty
+                body("id", everyItem(notNullValue())).   // Every product has an id
+                body(containsString("id")).
+                body(containsString("name")).
+                body("[0].name", equalTo("iPad")).
+                body("price", hasItem(500)).    // Prices exist in the response
+                body("[1].name", equalTo("iPhone X")).// second item in list
+                body("[1].price", equalTo(900));// second price in list
+    }
 
     @Test
     public void validateResponseHasItems() {
@@ -128,6 +128,64 @@ public class getProducts {
         assertThat(response.jsonPath().getList("name"), contains(expectedNames.toArray(new String[0])));
     }
 
+//    @Test
+//    public void testGetUsersWithQueryParameters() {
+//        // Set base URI for the API
+//        RestAssured.baseURI = "https://reqres.in/api";
+//
+//
+//        Response response = given()
+//                .queryParam("page", 2)
+//                .when()
+//                .get("/users")
+//                .then()
+//                .statusCode(200)
+//                .extract()
+//                .response();
+//
+//        // Assert that the response contains 6 users
+//        response.then().body("data", hasSize(6));
+//
+//        // Assert that the first user in the list has the correct values
+//        response.then().body("data[0].id", is(7));
+//        response.then().body("data[0].email", is("michael.lawson@reqres.in"));
+//        response.then().body("data[0].first_name", is("Michael"));
+//        response.then().body("data[0].last_name", is("Lawson"));
+//        response.then().body("data[0].avatar", is("https://reqres.in/img/faces/7-image.jpg"));
+//    }
+
+    @Test
+    public void testGetUsersWithQueryParameters() {
+        // Set base URI for your API
+        RestAssured.baseURI = "http://localhost:2002";
+
+        // Send GET request to /api/products
+        Response response = given()
+                .when()
+                .get("/api/products")
+                .then()
+                .statusCode(200) // Assert status code
+                .extract()
+                .response();
+
+        // Assert that there are exactly 3 products
+        response.then().body("", hasSize(3));
+
+        // Assert that the first product has the correct values
+        response.then().body("id[0]", is(1));   //is - equalTo
+        response.then().body("name[0]", is("iPad"));
+        response.then().body("price[0]", is(500));
+
+        // Optional: You can add similar assertions for other products if needed
+        response.then().body("id[1]", is(2));
+        response.then().body("name[1]", is("iPhone X"));
+        response.then().body("price[1]", is(900));
+    }
 
 
 }
+
+
+
+
+
