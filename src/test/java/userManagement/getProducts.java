@@ -2,6 +2,8 @@ package userManagement;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import java.util.*;
@@ -263,6 +265,41 @@ public class getProducts {
                 .statusCode(200);
         System.out.println("testWithTwoHeadersUsingMap Executed Successfully");
     }
+
+    @Test
+    public void testFetchAllHeaders() {
+        Response response = given()
+                .when()
+                .get("http://localhost:2002/api/products")
+                .then()
+                .extract().response(); //will still work without this line and .then()
+
+        Headers headers = response.getHeaders();
+        for (Header h : headers) {
+                System.out.println(h.getName() + " : " + h.getValue());
+            }
+        System.out.println("testFetchAllHeaders Executed Successfully");
+    }
+
+    @Test
+    public void testFetchHeaders() {
+        Response response = given()
+                .when()
+                .get("http://localhost:2002/api/products")
+                .then()
+                .extract().response(); //will still work without this line and .then()
+
+        Headers headers = response.getHeaders();
+        //if you want to print all headers then see above
+        for (Header h : headers) {
+            if (h.getName().contains("Server")) {
+                System.out.println(h.getName() + " : " + h.getValue());
+                assertEquals(h.getValue(), "Microsoft-HTTPAPI/2.0");
+                System.out.println("testFetchHeaders Executed Successfully");
+            }
+        }
+    }
+
 
 
 
