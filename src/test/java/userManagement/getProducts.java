@@ -8,6 +8,10 @@ import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import utils.JsonReader;
+
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -315,6 +319,22 @@ public class getProducts {
         assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing Enum used for status code
         System.out.println(resp.body().asString());
         System.out.println("validateResponseBodyGetBasicAuth Executed Successfully");
+    }
+
+    @Test()
+    public void validateBasicAuthWithTestDataFromJson() throws IOException, ParseException, org.json.simple.parser.ParseException {
+//        String username = JsonReader.getTestData("username");
+//        String password = JsonReader.getTestData("password");
+
+        Response resp = given()
+                .auth()
+                .basic(JsonReader.getTestData("username"), JsonReader.getTestData("password"))
+                .when()
+                .get("http://localhost:2002/api/products"); //RestAssured
+
+        int actualStatusCode = resp.statusCode();  //RestAssured
+        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing Enum used for status code
+        System.out.println("validateBasicAuthWithTestDataFromJson Executed Successfully");
     }
 
 
