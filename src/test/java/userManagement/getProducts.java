@@ -1,5 +1,7 @@
 package userManagement;
 
+
+import core.StatusCode;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.http.Header;
@@ -192,7 +194,7 @@ public class getProducts {
                 .get("https://api.jolpi.ca/ergast/f1/{raceSeason}/circuits.json "); //RestAssured
 
         int actualStatusCode = resp.statusCode();  //RestAssured
-        assertEquals(actualStatusCode, 200); //Testing
+        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing
         System.out.println(resp.body().asString()); // Printing response body in to console
 
     }
@@ -299,6 +301,22 @@ public class getProducts {
             }
         }
     }
+
+    @Test()
+    public void validateResponseBodyGetBasicAuth() {
+
+        Response resp = given()
+                .auth()
+                .basic("edge", "edgewords")
+                .when()
+                .get("http://localhost:2002/api/products"); //RestAssured
+
+        int actualStatusCode = resp.statusCode();  //RestAssured
+        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing Enum used for status code
+        System.out.println(resp.body().asString());
+        System.out.println("validateResponseBodyGetBasicAuth Executed Successfully");
+    }
+
 
 
 
