@@ -9,6 +9,7 @@ import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utils.JsonReader;
+import utils.PropertyReader;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -335,6 +336,18 @@ public class getProducts {
         int actualStatusCode = resp.statusCode();  //RestAssured
         assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing Enum used for status code
         System.out.println("validateBasicAuthWithTestDataFromJson Executed Successfully");
+    }
+
+    @Test()
+    public void validatePropertyReader() {
+        String serverAddress = PropertyReader.propertyReader("config.properties", "server");
+        Response resp = given()
+                .when()
+                .get(serverAddress); //RestAssured
+
+        int actualStatusCode = resp.statusCode();  //RestAssured
+        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing
+        System.out.println("validatePropertyReader Executed Successfully");
     }
 
 
