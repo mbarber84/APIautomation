@@ -1,14 +1,14 @@
 package userManagement;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
-
 import java.util.*;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.testng.AssertJUnit.*;
 
 public class getProducts {
 
@@ -181,6 +181,89 @@ public class getProducts {
         response.then().body("name[1]", is("iPhone X"));
         response.then().body("price[1]", is(900));
     }
+
+    @Test(description = "Validate the status code for GET users endpoint")
+    public void validateResponseBodyGetPathParam() {
+        String raceSeasonValue = "2017";
+        Response resp = given().pathParam("raceSeason", raceSeasonValue)
+                .when()
+                .get("https://api.jolpi.ca/ergast/f1/{raceSeason}/circuits.json "); //RestAssured
+
+        int actualStatusCode = resp.statusCode();  //RestAssured
+        assertEquals(actualStatusCode, 200); //Testing
+        System.out.println(resp.body().asString()); // Printing response body in to console
+
+    }
+//    @Test
+//    public void testCreateUserWithFormParam() {
+//        // Set base URI for the API
+//        RestAssured.baseURI = "https://reqres.in/api";
+//
+//        Response response = given()
+//                .contentType("application/x-www-form-urlencoded")
+//                .formParam("name", "John Doe")
+//                .formParam("job", "Developer")
+//                .when()
+//                .post("/users")
+//                .then()
+//                .statusCode(201)
+//                .extract()
+//                .response();
+//
+//        // Assert that the response contains the correct name and job values
+//        response.then().body("name", equalTo("John Doe"));
+//        response.then().body("job", equalTo("Developer"));
+//    }
+
+    @Test
+    public void testGetUserListWithHeader() {
+        // Set base URI for your API
+        RestAssured.baseURI = "http://localhost:2002";
+
+        given()
+                .header("Content-Type", "application/json")
+                .when()
+                .get("/api/products")
+                .then()
+                .statusCode(200);
+        System.out.println("testGetUserListWithHeader Executed Successfully");
+    }
+
+    @Test
+    public void testWithTwoHeader() {
+        // Set base URI for your API
+        RestAssured.baseURI = "http://localhost:2002";
+
+        given()
+                .header("Content-Type", "application/json")
+                .header("Connection", "keep-alive")
+                .when()
+                .get("/api/products")
+                .then()
+                .statusCode(200);
+        System.out.println("testWithTwoHeader Executed Successfully");
+    }
+
+    @Test
+    public void testWithTwoHeadersUsingMap() {
+        // Set base URI for the API
+        RestAssured.baseURI = "http://localhost:2002";
+
+        // Create a Map to hold headers
+        Map<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json");
+        headers.put("Connection", "keep-alive");
+
+        // Send a GET request with headers
+        given()
+                .headers(headers)
+                .when()
+                .get("/api/products")
+                .then()
+                .statusCode(200);
+        System.out.println("testWithTwoHeadersUsingMap Executed Successfully");
+    }
+
 
 
 }
