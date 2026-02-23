@@ -7,9 +7,14 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
+import org.json.simple.JSONArray;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import utils.JsonReader;
 import utils.PropertyReader;
+import utils.softAssertionUtil;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -18,9 +23,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.testng.AssertJUnit.*;
+import static utils.JsonReader.getTestDataArray;
 
 public class getProducts {
 
+    softAssertionUtil softAssertion = new softAssertionUtil();
 
     @Test
     public void getProductData() {
@@ -191,18 +198,7 @@ public class getProducts {
         response.then().body("price[1]", is(900));
     }
 
-    @Test(description = "Validate the status code for GET users endpoint")
-    public void validateResponseBodyGetPathParam() {
-        String raceSeasonValue = "2017";
-        Response resp = given().pathParam("raceSeason", raceSeasonValue)
-                .when()
-                .get("https://api.jolpi.ca/ergast/f1/{raceSeason}/circuits.json "); //RestAssured
 
-        int actualStatusCode = resp.statusCode();  //RestAssured
-        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing
-        System.out.println(resp.body().asString()); // Printing response body in to console
-
-    }
 //    @Test
 //    public void testCreateUserWithFormParam() {
 //        // Set base URI for the API
@@ -340,7 +336,7 @@ public class getProducts {
 
     @Test()
     public void validatePropertyReader() {
-        String serverAddress = PropertyReader.propertyReader("config.properties", "server");
+        String serverAddress = PropertyReader.propertyReader("config.properties", "serverAdd");
         Response resp = given()
                 .when()
                 .get(serverAddress); //RestAssured
@@ -349,6 +345,83 @@ public class getProducts {
         assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing
         System.out.println("validatePropertyReader Executed Successfully");
     }
+
+    @Test()
+    public void validateFromPropertyReader_TestData() {
+        String serverAddress = PropertyReader.propertyReader("config.properties", "server");
+        String endpoint = JsonReader.getTestData("endpoint");
+        String URL = serverAddress + endpoint;
+        System.out.println(URL);
+        Response resp = given()
+                .when()
+                .get(URL); //RestAssured
+
+        int actualStatusCode = resp.statusCode();  //RestAssured
+        assertEquals(resp.getStatusCode(), StatusCode.SUCCESS.code); //Testing
+        System.out.println("validateFromPropertyReader_TestData Executed Successfully");
+    }
+
+    @Test
+    public void softAssertion(){
+
+        System.out.println("softAssertion Executed Successfully");
+        softAssertion.assertTrue(true,"softAssertion Executed Successfully");
+        softAssertion.assertAll();
+    }
+
+    @Test
+    public void validateWithSoftAssertion() {
+        // Set base URI for your API
+        RestAssured.baseURI = "http://localhost:2002";
+
+        // Send GET request to /api/products
+        Response response = given()
+                .when()
+                .get("/api/products")
+                .then()
+                .statusCode(200) // Assert status code
+                .extract()
+                .response();
+
+        // Soft Assert that the status code is 200 from StatueCode Enum
+        softAssertion.assertEquals(response.getStatusCode(), StatusCode.SUCCESS.code, "Status code mismatch");
+        softAssertion.assertAll();
+        System.out.println("validateWithSoftAssertion Executed Successfully");
+    }
+
+
+    @DataProvider(name = "testdata")
+    public Object[][] testData() {
+        return new Object[][] {
+                {"1", "iPad"},
+                {"2", "iPhone"},
+                {"3", "Google Tablet"}
+        };
+    }
+
+    @Test(dataProvider = "testdata")
+    @Parameters({"id", "name"})
+    public void testEndpoint(String id, String name) {
+        given()
+                .param("id", id)
+                .param("name", name)
+                .when()
+                .get("http://localhost:2002/api/products")
+                .then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void Test(){
+        JsonReader.getJsonArrayData("languages", 0);
+        JSONArray jsonArray = getTestDataArray("contact");
+        Iterator<String> iterator = jsonArray.iterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+    }
+
 
 
 

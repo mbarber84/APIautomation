@@ -1,12 +1,11 @@
 package utils;
 
 import org.apache.commons.io.FileUtils;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.File;
-import java.io.IOException;
-import java.text.ParseException;
 
 public class JsonReader {
 
@@ -41,5 +40,20 @@ public class JsonReader {
 
         // Fail FAST with clear error
         throw new RuntimeException("Key not found in test data: " + key);
+    }
+
+    public static JSONArray getTestDataArray(String key) {
+        return (JSONArray) jsonObject.get(key);
+    }
+
+    // ✅ FIXED
+    public static Object getJsonArrayData(String key, int index) {
+        JSONArray array = getTestDataArray(key);
+
+        if (array == null) {
+            throw new RuntimeException("Array not found: " + key);
+        }
+
+        return array.get(index);
     }
 }
