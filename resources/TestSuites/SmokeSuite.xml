@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="API Automation Smoke Suite Session">
+    <listeners>
+        <listener class-name="utils.RetryListener"/>
+    </listeners>
     <test name="API Products TestCases" parallel="tests" thread-count="4">
 <!--        <groups>-->
 <!--            <run>-->
