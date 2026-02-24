@@ -1,6 +1,7 @@
 package userManagement;
 
 
+import core.BaseTest;
 import core.StatusCode;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -12,6 +13,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import utils.ExtentReport;
 import utils.JsonReader;
 import utils.PropertyReader;
 import utils.softAssertionUtil;
@@ -25,12 +27,14 @@ import static org.hamcrest.Matchers.*;
 import static org.testng.AssertJUnit.*;
 import static utils.JsonReader.getTestDataArray;
 
-public class getProducts {
+public class getProducts extends BaseTest {
 
     softAssertionUtil softAssertion = new softAssertionUtil();
 
-    @Test
+    @Test(groups = {"SmokeSuite"})
     public void getProductData() {
+        ExtentReport.extentlog = ExtentReport.extentreport.
+                startTest("getProductData", "validate the Get method returns the status code 200");
         given().
                 when().get("http://localhost:2002/api/products").
                 then().
@@ -38,8 +42,10 @@ public class getProducts {
                 statusCode(200);
     }
 
-    @Test
+    @Test(groups = {"SmokeSuite"})
     public void validateGetResponseBody() {
+        ExtentReport.extentlog = ExtentReport.extentreport.
+                startTest("validateGetResponseBody", "validate the Get method returns the response body");
         given().
                 when().get("http://localhost:2002/api/products").
                 then().
@@ -54,8 +60,10 @@ public class getProducts {
                 body("[1].price", equalTo(900));// second price in list
     }
 
-    @Test
+    @Test(groups = {"SmokeSuite"})
     public void validateResponseHasItems() {
+        ExtentReport.extentlog = ExtentReport.extentreport.
+                startTest("validateResponseHasItems", "validate that the response contains Items");
         // Set base URI for the API
         RestAssured.baseURI = "http://localhost:2002/api";
 

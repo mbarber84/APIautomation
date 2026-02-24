@@ -1,17 +1,21 @@
 package userManagement;
 
+import core.BaseTest;
 import core.StatusCode;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
+import utils.ExtentReport;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class getF1 {
+public class getF1 extends BaseTest {
 
-    @Test(description = "Validate the status code for GET users endpoint")
+    @Test(description = "Validate the status code for GET users endpoint", groups = {"SmokeSuite"})
     public void validateResponseBodyGetPathParam() {
         String raceSeasonValue = "2017";
+        ExtentReport.extentlog = ExtentReport.extentreport.
+                startTest("validateResponseBodyGetPathParam", "validate Response Body Get Path Param");
         Response resp = given().pathParam("raceSeason", raceSeasonValue)
                 .when()
                 .get("https://api.jolpi.ca/ergast/f1/{raceSeason}/circuits.json "); //RestAssured
