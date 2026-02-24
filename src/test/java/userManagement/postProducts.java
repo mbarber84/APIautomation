@@ -11,7 +11,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
 import static io.restassured.RestAssured.given;
 import static org.testng.AssertJUnit.assertEquals;
@@ -90,7 +89,7 @@ public class postProducts {
 //    }
 
     @Test
-    public void validatePostWithPOJO() throws IOException {
+    public void validatePostWithPOJO() {
 
         postRequestBody postRequest=  new postRequestBody();
         postRequest.setName("Mouse000");
@@ -107,5 +106,29 @@ public class postProducts {
         System.out.println("validatePostWithPOJO was successful");
     }
 
+    @Test
+    public void validateGetResponsePOJO() {
+
+        String Name = "Mouse000";
+        int Price = 10;
+
+        postRequestBody postRequest=  new postRequestBody();
+        postRequest.setName(Name);
+        postRequest.setPrice(Price);
+
+        Response response = given()
+                .header("Content-type", "application/json")
+                .body(postRequest)
+                .when()
+                .post("http://localhost:2002/api/products");
+        postRequestBody responseBody = response.as(postRequestBody.class);
+        System.out.println(responseBody.getId());
+        //assertEquals(resp.statusCode(), 200); //Testng
+        assertEquals(201, response.statusCode()); //Testing
+        assertEquals(Name, responseBody.getName());
+        assertEquals(responseBody.getPrice(), Integer.valueOf(Price));
+        System.out.println(response.getBody().asString());
+        System.out.println("validateGetResponsePOJO was successful");
+    }
 
 }

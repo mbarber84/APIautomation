@@ -1,0 +1,693 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "MRData": {
+      "type": "object",
+      "properties": {
+        "xmlns": {
+          "type": "string"
+        },
+        "series": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "limit": {
+          "type": "string"
+        },
+        "offset": {
+          "type": "string"
+        },
+        "total": {
+          "type": "string"
+        },
+        "CircuitTable": {
+          "type": "object",
+          "properties": {
+            "season": {
+              "type": "string"
+            },
+            "Circuits": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "circuitId": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "circuitName": {
+                      "type": "string"
+                    },
+                    "Location": {
+                      "type": "object",
+                      "properties": {
+                        "lat": {
+                          "type": "string"
+                        },
+                        "long": {
+                          "type": "string"
+                        },
+                        "locality": {
+                          "type": "string"
+                        },
+                        "country": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
