@@ -5,6 +5,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.commons.io.IOUtils;
 import org.testng.annotations.Test;
+import pojo.postRequestBody;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -87,6 +88,24 @@ public class postProducts {
 //        System.out.println(response.getBody().asString());
 //        System.out.println("validatePatchWithJsonAsFile was successful");
 //    }
+
+    @Test
+    public void validatePostWithPOJO() throws IOException {
+
+        postRequestBody postRequest=  new postRequestBody();
+        postRequest.setName("Mouse000");
+        postRequest.setPrice(10);
+
+        Response response = given()
+                .header("Content-type", "application/json")
+                .body(postRequest)
+                .when()
+                .post("http://localhost:2002/api/products");
+        //assertEquals(resp.statusCode(), 200); //Testng
+        assertEquals(201, response.statusCode()); //Testing
+        System.out.println(response.getBody().asString());
+        System.out.println("validatePostWithPOJO was successful");
+    }
 
 
 }
