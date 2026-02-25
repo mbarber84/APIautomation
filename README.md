@@ -9,7 +9,7 @@ It contains code and configurations to automate REST API interactions — ideal 
 
 ---
 
-## 🚀 Features
+##Features
 
 - Java-based API automation using automated HTTP calls
 - Configurable via `config.properties` for easy environment switching
@@ -18,7 +18,7 @@ It contains code and configurations to automate REST API interactions — ideal 
 
 ---
 
-## 📝 Prerequisites
+##Prerequisites
 
 Make sure you have the following installed before running this project locally:
 
@@ -28,7 +28,7 @@ Make sure you have the following installed before running this project locally:
 
 ---
 
-## 🛠️ Setup & Build
+##Setup & Build
 
 1. Clone this repository:
 
