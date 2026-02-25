@@ -13,6 +13,7 @@
         <classes>
             <class name="userManagement.getProducts" />
             <class name="userManagement.getF1" />
+            <class name="userManagement.jsonSchemaValidation" />
         </classes>
 <!--        <packages>-->
 <!--            <package name="userManagement"/>-->

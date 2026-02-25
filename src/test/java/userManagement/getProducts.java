@@ -29,7 +29,7 @@ import static utils.JsonReader.getTestDataArray;
 
 public class getProducts extends BaseTest {
 
-    softAssertionUtil softAssertion = new softAssertionUtil();
+    //softAssertionUtil softAssertion = new softAssertionUtil();
 
     @Test(groups = {"SmokeSuite"})
     public void getProductData() {
@@ -373,8 +373,8 @@ public class getProducts extends BaseTest {
     public void softAssertion(){
 
         System.out.println("softAssertion Executed Successfully");
-        softAssertion.assertTrue(true,"softAssertion Executed Successfully");
-        softAssertion.assertAll();
+        softAssertionUtil.assertTrue(true,"softAssertion Executed Successfully");
+        softAssertionUtil.assertAll();
     }
 
     @Test
@@ -392,8 +392,8 @@ public class getProducts extends BaseTest {
                 .response();
 
         // Soft Assert that the status code is 200 from StatueCode Enum
-        softAssertion.assertEquals(response.getStatusCode(), StatusCode.SUCCESS.code, "Status code mismatch");
-        softAssertion.assertAll();
+        softAssertionUtil.assertEquals(response.getStatusCode(), StatusCode.SUCCESS.code, "Status code mismatch");
+        softAssertionUtil.assertAll();
         System.out.println("validateWithSoftAssertion Executed Successfully");
     }
 
